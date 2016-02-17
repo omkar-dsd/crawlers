@@ -21,6 +21,17 @@ def linkExtractor(urltoopen, tag1, attrib1, attrib1value, tag2 ,attrib2, attrib2
 	result = soup.findAll(tag1,{attrib1:attrib1value})
 	hreflist = []
 
+	print "------------------------"
+	print "------------------------"
+	print "------------------------"
+	nextpagetag = soup.find('span', {'class':'pagnRA'})
+	nextpagehref = nextpagetag.a['href']
+	nextpagelink = "http://www.amazon.com" + nextpagehref 
+	print nextpagelink
+	print "------------------------"
+	print "------------------------"
+	print "------------------------"
+
 	for i in range(0,len(result)):
 		resultDetails = result[i].find(tag2,{attrib2:attrib2value})
 		link = resultDetails[finalAttrib]
@@ -37,3 +48,4 @@ def forPrinter(x):
 url = "http://www.amazon.com/s/ref=nb_sb_noss_2/185-5945162-0333204?url=search-alias%3Daps&field-keywords=laptop"
 links = linkExtractor(url,"li","class","s-result-item","a","class","a-link-normal","href")
 forPrinter(links)
+
