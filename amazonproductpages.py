@@ -37,6 +37,7 @@ urllib2.install_opener(opener)
 def allPages(soup):
 
 	lastpagetag = soup.find('span', {'class' : 'pagnDisabled'})
+	
 	lastpagenumber = lastpagetag.get_text()
 
 	pageslist = []
