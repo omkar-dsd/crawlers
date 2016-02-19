@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup as bs
 from pymongo import MongoClient
 import urllib2
 
+
 # PROXY HANDLER----
 
 proxy=urllib2.ProxyHandler({})
@@ -36,8 +37,9 @@ urllib2.install_opener(opener)
 
 def allPages(soup):
 
-	lastpagetag = soup.find('div', {'pagn' : 'pagnHy'})
-	lastpagenumber = lastpagetag.span.get_text()
+	lastpagetag = soup.find('span', {'class' : 'pagnDisabled'})
+
+	lastpagenumber = lastpagetag.get_text()
 
 	pageslist = []
 
