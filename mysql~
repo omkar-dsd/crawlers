@@ -1,0 +1,42 @@
+INSTALL:
+sudo apt-get install mysql-server
+
+(set password for root server)
+
+CHECK RUNNING:
+sudo netstat -tap | grep mysql
+
+RESTART SERVICES:
+sudo service mysql restart
+
+CHANGE PASSWORD:
+sudo dpkg-reconfigure mysql-server-5.5
+
+START MYSQL SHELL:
+mysql -u root -p
+
+CREATE DATABASE:
+create database DBName;
+
+CREATE TABLE:
+
+use DBName;
+CREATE TABLE tableName
+(
+	column1_name data_type(size),
+	column2_name data_type(size),
+	personID int,
+	name varchar(255),	
+	.....	
+	.....	
+
+);
+
+
+CONTRAINTS FOR COLUMNS:
+
+NOT NULL
+UNIQUE
+PRIMARY KEY
+FOREIGN KEY
+CHECK DEFAULT
