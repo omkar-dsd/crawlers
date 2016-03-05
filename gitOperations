@@ -1,0 +1,20 @@
+Change your directory to from which you want to push files.
+
+Add the file which you want to push:
+
+(for particular file): git add fileName.Extension
+
+(for all files): git add *
+
+Commiting:
+
+git commit -m "yourMessageHere"
+
+Push to GitHUb:
+
+git push
+
+(enter username)
+(enter password)
+
+ 
