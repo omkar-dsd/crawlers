@@ -1,3 +1,5 @@
+https://www.pantz.org/software/mysql/mysqlcommands.html
+
 INSTALL:
 sudo apt-get install mysql-server
 
@@ -34,6 +36,24 @@ CREATE TABLE tableName
 
 INSERT INTO TABLE:
 INSERT INTO tableName(col1,col2,col3,...);
+
+VIEW TABLE:
+(THE SELECT STATEMENT):
+
+SELECT * FROM tableName;
+
+(particular columns): SELECT col1,col2 FROM tableName;
+
+STRUCTURE OF TABLE:
+DESCRIBE tableName;
+
+DELETE DATABASE:
+DROP DATABASE databaseName;
+
+DELETE TABLE:
+DROP TABLE tableName;
+
+
 
 CONTRAINTS FOR COLUMNS:
 

@@ -1,0 +1,36 @@
+from scrapy.selector import HtmlXPathSelector
+from scrapy.contrib.linkextractors.sgml import SgmlLinkExtractor
+from scrapy.contrib.spiders import CrawlSpider, Rule
+from ScrapScrapy.items import ScrapscrapyItem
+
+class ScrapyspiderSpider(CrawlSpider):
+    name = 'scrapyspider'
+    allowed_domains = ['scrapy.org']
+    start_urls = ['http://scrapy.org/']
+    #domain does not include http or wwww
+
+
+
+
+
+
+    # rules = (
+    #     Rule(SgmlLinkExtractor(allow=r'Items/'), callback='parse_item', follow=True),
+    # )
+
+    def parse_item(self, response):
+        hxs = HtmlXPathSelector(response)
+        i = ScrapscrapyItem()
+
+        # address are put in form of Xpath below
+
+        i['Heading']= hxs.select('/html/body/div[2]/div/div[2]/div[1]/div[2]/p/text()').extract()
+        i['Content']= hxs.select('/html/body/div[2]/div/div[1]/div/div[1]/p[1]/text()').extract()
+        i['Source_Website']= "http://scrapy.org/"
+        print i
+
+       
+        #i['domain_id'] = hxs.select('//input[@id="sid"]/@value').extract()
+        #i['name'] = hxs.select('//div[@id="name"]').extract()
+        #i['description'] = hxs.select('//div[@id="description"]').extract()
+        return i
