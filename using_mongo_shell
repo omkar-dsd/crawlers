@@ -1,0 +1,7 @@
+>> mongo
+>> use Database_Name
+show collections
+db.collection_name.find()
+db.collection_name.find().toArray()
+
+
