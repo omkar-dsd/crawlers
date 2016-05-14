@@ -1,22 +1,47 @@
 from pymongo import MongoClient
+import pymongo
 import re
 
 
 
 
-y = raw_input("Data: ")
+userquery = raw_input("")
+#mongodb://192.168.101.5:27017/'
+client = MongoClient('mongodb://192.168.101.5:27017/')
+db = client.nasadb
+#db.nasacollection.create_index({"$**":"text"}, {"weights": {"Content": 10, "Launch_Date": 5, "URL": 2}})
 
-client = MongoClient()
-db = client.jsondatabase
-#db.jsoncollection.createIndex({"$**":"text"}, {weights: {"Content": 10, "Launch_Date": 5, "URL": 2}})
-# cursor = db.jsoncollection.find({r'.*':y})
 
+
+#CREATE INDEX WHEN RUNNING CRAWLER FOR THE FIRST TIME------------------------
+
+# db.nasacollection.ensure_index([
+#       ('Content', 'text'),
+#       ('Launch_Date', 'text'),
+#       ('Phase','text')
+#   ],
+#   name="nasadb_index",
+#   weights={
+#       'Phase':2,
+#       'Content':10,
+#       'Launch_Date':5	
+#   }
+# )
+# CREATE INDEX END ----------------------------------
+
+
+
+#db.nasacollection.create_index("Content")
+
+#cursor = db.nasacollection.find({r'.*':userquery})
 # cursor = db.jsoncollection.find({'Content': re.match( r'.*\y .*', line, re.M|re.I)})
-cursor = db.jsoncollection.find({'$text':{'$search':y}})
+
+cursor = db.nasacollection.find({'$text':{'$search': userquery}})
 
 # cursor = db.jsoncollection.find()
 
 for document in cursor:
+	
 
 	# MISSION NAME SECTION
 	missionName = str(document['Content'])
@@ -51,5 +76,3 @@ for document in cursor:
 	#print "Operating Phase : ", document['Phase']
 	print " "
 	print " "
-
-

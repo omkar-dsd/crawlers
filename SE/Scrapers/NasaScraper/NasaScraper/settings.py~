@@ -13,9 +13,9 @@ SPIDER_MODULES = ['NasaScraper.spiders']
 NEWSPIDER_MODULE = 'NasaScraper.spiders'
 USER_AGENT = '%s/%s' % (BOT_NAME, BOT_VERSION)
 
-ITEM_PIPELINES = ['NasaScraper.pipelines.NasascraperPipeline', ]
+ITEM_PIPELINES = ['NasaScraper.pipelines.NasaPipeline', ]
 
-MONGODB_SERVER = "192.168.101.5"
-MONGODB_PORT = 27017
+MONGODB_SERVER = "localhost"
+MONGODB_PORT = 6666
 MONGODB_DB = "nasadb"
 MONGODB_COLLECTION = "nasacollection"
